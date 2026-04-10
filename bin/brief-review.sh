@@ -28,8 +28,8 @@ REVIEW_NAME="${2:-}"
 REVIEW_ID="${3:-$(date +%Y%m%d)-001}"
 ON_RATE_LIMIT="skip"
 
-# Parse optional flags
-shift 3 2>/dev/null || true
+# Shift past the positional args (only as many as were provided)
+shift $(( $# < 3 ? $# : 3 ))
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --on-rate-limit)
