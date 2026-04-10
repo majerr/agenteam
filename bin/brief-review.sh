@@ -50,4 +50,8 @@ PROMPT=$(sed \
 
 mkdir -p "$OUTPUT_DIR"
 
-echo "$PROMPT" | claude --print --allowedTools "Read,Write(./${OUTPUT_DIR}/**),WebSearch,WebFetch"
+# --permission-mode acceptEdits is required for subagents to write review files
+# without prompting. Path-restricted Write patterns (e.g. Write(./docs/**)) are not
+# reliably respected by subagents (anthropics/claude-code#33901), and wildcard
+# pattern matching itself has known bugs (#28023, #37496). Revisit when fixed.
+echo "$PROMPT" | claude --print --permission-mode acceptEdits --allowedTools "Read,Write,WebSearch,WebFetch"
