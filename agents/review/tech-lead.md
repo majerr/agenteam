@@ -169,6 +169,11 @@ The caller **must** provide `review-id` and `review-name`. If either is missing:
 
 Do **not** invent or guess these values.
 
+### Rate limits
+
+If you encounter a rate limit error (429) at any point during your work, **DO NOT RETRY**. Stop immediately and return to the caller:
+> `RATE_LIMIT_ERROR: tech-lead`
+
 ---
 
 ## Cross-Cutting Principles

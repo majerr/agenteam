@@ -15,8 +15,7 @@ Instructions:
 
 * Report progress as you go. Report any errors or messages from the agents.
 
-* If an Agent tool call fails with a rate limit error (429), **DO NOT RETRY**. Stop immediately and report:
-  "RATE_LIMIT_ERROR: {subagent_name}"
+* {{RATE_LIMIT_BEHAVIOUR}}
 
 * When all agents have completed, synthesize their reviews into a single document in {{OUTPUT_DIR}}, named:
   {yyyymmdd}-{{REVIEW_ID}}-{{REVIEW_NAME}}-synthesis.md

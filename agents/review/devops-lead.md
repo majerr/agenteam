@@ -94,6 +94,11 @@ The filename format is: `{yyyymmdd}-{review-id}-{review-name}-devops-lead.md`
 The caller **must** provide `review-id` and `review-name`. If either is missing, ask the caller or fail with:
 > **Error: Missing required review parameters.** Please re-invoke with `review-id` and `review-name` specified.
 
+### Rate limits
+
+If you encounter a rate limit error (429) at any point during your work, **DO NOT RETRY**. Stop immediately and return to the caller:
+> `RATE_LIMIT_ERROR: devops-lead`
+
 ---
 
 ## Memory

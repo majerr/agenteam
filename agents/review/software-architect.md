@@ -69,6 +69,11 @@ The caller (human or orchestrating agent) **must** provide `review-id` and `revi
 
 Do **not** invent or guess these values. The caller controls the naming.
 
+### Rate limits
+
+If you encounter a rate limit error (429) at any point during your work, **DO NOT RETRY**. Stop immediately and return to the caller:
+> `RATE_LIMIT_ERROR: software-architect`
+
 ### Report Structure
 
 Every report must contain:
