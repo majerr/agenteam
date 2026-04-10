@@ -50,4 +50,4 @@ PROMPT=$(sed \
 
 mkdir -p "$OUTPUT_DIR"
 
-claude --print "$PROMPT"
+claude --print --allowedTools "Read" "Write(./${OUTPUT_DIR}/**)" "WebSearch" "WebFetch" "$PROMPT"
