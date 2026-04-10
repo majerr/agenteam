@@ -19,6 +19,12 @@ install_global() {
   find "$SCRIPT_DIR/agents" -name "*.md" -exec cp {} ~/.claude/agents/ \;
   echo "  $(find "$SCRIPT_DIR/agents" -name "*.md" | wc -l | tr -d ' ') agent(s) installed."
 
+  local data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/agenteam"
+  echo "Installing prompts to $data_dir/prompts/ ..."
+  mkdir -p "$data_dir/prompts"
+  cp -r "$SCRIPT_DIR/prompts/"* "$data_dir/prompts/"
+  echo "  Prompts installed."
+
   echo "Installing scripts to ~/.local/bin/ ..."
   mkdir -p ~/.local/bin
   for script in "$SCRIPT_DIR/bin/"*.sh; do

@@ -31,8 +31,13 @@ OUTPUT_DIR="${OUTPUT_DIR:-docs/reviews}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROMPT_TEMPLATE="$SCRIPT_DIR/../prompts/review/brief-review.md"
 
+# Fall back to the global install location if not running from the repo directly
 if [[ ! -f "$PROMPT_TEMPLATE" ]]; then
-  echo "Error: prompt template not found at '$PROMPT_TEMPLATE'" >&2
+  PROMPT_TEMPLATE="${XDG_DATA_HOME:-$HOME/.local/share}/agenteam/prompts/review/brief-review.md"
+fi
+
+if [[ ! -f "$PROMPT_TEMPLATE" ]]; then
+  echo "Error: prompt template not found. Re-run install.sh to reinstall." >&2
   exit 1
 fi
 
